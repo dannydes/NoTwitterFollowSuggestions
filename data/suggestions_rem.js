@@ -17,6 +17,14 @@
 		}
 	}
 
-	addEventListener('paint', removeSuggestions);
+	let container = document.getElementById('page-container');
+
+	let mutationObserver = new MutationObserver(removeSuggestions);
+	let config = {
+	  childList: true
+	};
+
+	mutationObserver.observe(container, config);
+
 	removeSuggestions();
 })();
